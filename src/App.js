@@ -10,7 +10,10 @@ function App() {
       <Router>
         <Routes>
           <Route element={<Login />} path="/" exact />
-          <ProtectedRoute element={<Todo />} path="/todo" exact isAuth={true} />
+          <Route
+            path="/todo"
+            element={<ProtectedRoute element={<Todo />} exact isAuth={true} />}
+          />
         </Routes>
       </Router>
     </div>

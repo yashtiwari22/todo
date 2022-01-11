@@ -1,21 +1,8 @@
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ isAuth: isAuth, element: element, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (isAuth) {
-          return <element />;
-        } else {
-          return (
-            <Navigate to={{ pathname: "/", state: { from: props.location } }} />
-          );
-        }
-      }}
-    />
-  );
+const ProtectedRoute = ({ isAuth: isAuth, element: Element, ...rest }) => {
+  return <>{isAuth ? Element : <Navigate to={{ pathname: "/" }} />}</>;
 };
 
 export default ProtectedRoute;
